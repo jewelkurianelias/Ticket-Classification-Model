@@ -40,11 +40,10 @@ def promote_model():
     if run_f1 >= min_f1:
         # Promote to Production!
         print(f"🏆 Policy Passed! Promoting Version {latest_version.version} to Production.")
-        client.transition_model_version_stage(
+        client.set_registered_model_alias(
             name=model_name,
-            version=latest_version.version,
-            stage="Production",
-            archive_existing_versions=True # Automatically demotes old prod models
+            alias="Production",
+            version=latest_version.version
         )
     else:
         print(f"⚠️ Policy Failed! Model did not meet minimum F1 score requirement.")
