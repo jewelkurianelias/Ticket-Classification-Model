@@ -1,0 +1,17 @@
+# Centralized configuration to ensure reproducibility
+data:
+  raw_path: "data/tickets.csv"
+
+training:
+  random_state: 42
+  test_size: 0.2
+  # TF-IDF parameters
+  tfidf_max_features: 1000
+  # Random Forest parameters
+  rf_n_estimators: 100
+  rf_max_depth: 15
+
+registry:
+  model_name: "TicketClassifier"
+  # The strict policy: Models must achieve at least this F1 score to be promoted
+  min_f1_score: 0.85
